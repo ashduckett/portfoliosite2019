@@ -19,56 +19,48 @@ class SkillBoard {
         this.data = [
             {
                 label: 'HTML',
-                percent: 80
+                percent: 96
             },
             {
                 label: 'CSS',
-                percent: 40
+                percent: 87
             },
             {
                 label: 'SASS',
-                percent: 90
+                percent: 81
             },
             {
                 label: 'PHP',
-                percent: 90
+                percent: 78
             },
             {
                 label: 'Laravel',
-                percent: 90
+                percent: 35
             },
             {
                 label: 'JavaScript',
-                percent: 90
+                percent: 79
+            },
+            {
+                label: 'ES6',
+                percent: 77
             },
             {
                 label: 'Vue',
-                percent: 90
+                percent: 66
             },
             {
                 label: 'UI Design',
-                percent: 90
+                percent: 50
             },
             {
                 label: 'Swift',
-                percent: 90
+                percent: 69
             },
             {
                 label: 'SQL',
-                percent: 90
-            },
-            {
-                label: 'Alcohol',
-                percent: 90
-            },
-            {
-                label: 'Hash',
-                percent: 90
-            },
-            {
-                label: 'Smack',
-                percent: 90
-            },
+                percent: 77
+            }
         ];
     }
 
