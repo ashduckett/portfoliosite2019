@@ -50,19 +50,17 @@ document.addEventListener('DOMContentLoaded', () => {
             headerText: '10 Radio',
             subheaderText: 'Promotion of a local radio station',
             detail: 'Giving something back to a community, this local radio station based in Wiveliscome needed some promotion.',
-            demoUrl: '#'
+            demoUrl: '#',
+            medium: 'android'
                       
         }
 
     ];
 
-    // let i = 0;
-
     for (let i = 0; i < learnMoreButtons.length; i++) {
         learnMoreButtons[i].addEventListener('click', (evt) => {
             evt.preventDefault();
-            console.log(i)            
-        
+           
             if (i === 0) {
                 modal = new Modal(buttonData[0]);
             } else if (i === 1) {

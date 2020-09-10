@@ -20,6 +20,10 @@ ModalModel.prototype.getDemoUrl = function() {
     return this.data.demoUrl;
 };
 
+ModalModel.prototype.getMedium = function() {
+    return this.data.medium;
+};
+
 function ModalView(controller) {
     this.currentSlide = controller.getCurrentSlide();
     this.controller = controller;
@@ -94,24 +98,16 @@ function ModalView(controller) {
     topSection.appendChild(rightArrowContainer);
 
     for (let image of imagesArray) {
-
-        const r = Math.random() * 255;
-        const g = Math.random() * 255;
-        const b = Math.random() * 255;
-
         const slide = document.createElement('div');
-        slide.style.backgroundColor = `RGB(${r}, ${g}, ${b})`;
         slide.style.height = '100%';
         slide.style.width = '100%';
         slide.style.position = 'absolute';
         slide.style.display = 'none';
-//        slide.classList.add('slide-' + index);
         slide.classList.add('slide');
         slide.style.backgroundImage = 'url(img/' + image + ')'
         slide.style.backgroundSize = '100%';
         this.slides.push(slide);
         topSection.appendChild(slide);
-  //      index++;
     }
 
     this.slides[0].style.left = '0';
@@ -245,29 +241,66 @@ function ModalView(controller) {
     this.modalElement.appendChild(footerBottomStrip)
 
     // Create button
-    const viewDemo = document.createElement('a');
-    viewDemo.innerHTML = 'View Site';
-    viewDemo.href = this.controller.getDemoUrl();
 
-    if (this.controller.getDemoUrl() === '#') {
-        viewDemo.addEventListener('click', (e) => {
-            e.preventDefault();
-        });
+
+    const demoButtonContainer = document.createElement('div');
+
+    const viewDemo = document.createElement('a');
+    const viewSecondDemo = document.createElement('a');
+
+    if (this.controller.getMedium() !== 'android') {
+        
+        viewDemo.innerHTML = 'View Site';
+        viewDemo.href = this.controller.getDemoUrl();
+
+        if (this.controller.getDemoUrl() === '#') {
+            viewDemo.addEventListener('click', (e) => {
+                e.preventDefault();
+            });
+        }
+    
+        viewDemo.setAttribute('target', '_blank');
+        viewDemo.style.fontSize = '10pt';
+        viewDemo.style.fontWeight = '600';
+        viewDemo.style.textTransform = 'uppercase';
+        viewDemo.style.padding = '11px 30px';
+        viewDemo.style.backgroundColor = '#e31b6d';
+        viewDemo.style.textDecoration = 'none';
+        viewDemo.style.color = 'white';
+        viewDemo.style.fontFamily = 'Raleway';
+    
+    } else {
+    
+        viewDemo.href = "https://play.google.com/store/apps/details?id=com.uncouthstudios.a10radio&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1";
+        
+        const androidImage = document.createElement('img');
+        androidImage.alt = 'Get it on Google Play';
+        androidImage.src = 'https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png';
+        androidImage.style.height = '75px';
+        
+        viewDemo.appendChild(androidImage);
+
+        viewSecondDemo.href = "https://apps.apple.com/tt/app/10radio/id1526367782#?platform=iphone";
+        const iosImage = document.createElement('img');
+        iosImage.alt = 'Get it on Google Play';
+        iosImage.src = 'img/apple.svg';
+        iosImage.style.height = '53px';
+        viewSecondDemo.appendChild(iosImage);
+        
     }
 
 
+    demoButtonContainer.appendChild(viewDemo);
+    demoButtonContainer.style.display = 'flex';
+    demoButtonContainer.style.alignItems = 'center';
+    // footerBottomStrip.appendChild(viewDemo);
 
-    viewDemo.setAttribute('target', '_blank');
-    viewDemo.style.fontSize = '10pt';
-    viewDemo.style.fontWeight = '600';
-    viewDemo.style.textTransform = 'uppercase';
-    viewDemo.style.padding = '11px 30px';
-    viewDemo.style.backgroundColor = '#e31b6d';
-    viewDemo.style.textDecoration = 'none';
-    viewDemo.style.color = 'white';
-    viewDemo.style.fontFamily = 'Raleway';
-    footerBottomStrip.appendChild(viewDemo);
-    
+    if (viewSecondDemo) {
+        demoButtonContainer.appendChild(viewSecondDemo);
+
+    }
+    footerBottomStrip.appendChild(demoButtonContainer);    
+
     // Close button
     const closeButton = document.createElement('a');
     closeButton.href = '#';
@@ -321,4 +354,8 @@ Modal.prototype.getSubheaderText = function() {
 
 Modal.prototype.getDemoUrl = function() {
     return this.modalModel.getDemoUrl();
+};
+
+Modal.prototype.getMedium = function() {
+    return this.modalModel.getMedium();
 };

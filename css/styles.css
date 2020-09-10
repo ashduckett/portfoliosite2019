@@ -176,7 +176,6 @@ body {
     max-width: 1200px; }
     .projects .projects-grid__project {
       overflow: hidden;
-      transition: all 1s;
       position: relative;
       width: 33.33%;
       padding-top: calc((33.33% / 100) * 76.92);
@@ -401,3 +400,36 @@ body {
 @media only screen and (max-width: 1024px) {
   .contactForm {
     width: 80% !important; } }
+
+@media only screen and (max-width: 1170px) {
+  .projects {
+    padding-bottom: 0; }
+    .projects .projects-grid__project {
+      width: 50%;
+      padding-top: calc((50% / 100) * 76.92); } }
+
+@media only screen and (max-width: 700px) {
+  .projects .section-intro {
+    padding: 3rem; }
+  .projects .projects-grid {
+    width: 100%; }
+    .projects .projects-grid__project {
+      width: 100%;
+      padding-top: calc((100% / 100) * 76.92); } }
+
+@keyframes arrowBounce {
+  0%, 25% {
+    transform: translate(-50%, -100%); }
+  50% {
+    transform: translate(-50%, -200%); }
+  100% {
+    transform: translate(-50%, -100%); } }
+
+.header__scroll-arrow {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  font-size: 5rem;
+  color: white;
+  animation: arrowBounce 2s ease 1s infinite; }

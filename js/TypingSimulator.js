@@ -28,8 +28,6 @@ class TypingSimulator {
 
             document.getElementById('paper').width = document.body.clientWidth;
             document.getElementById('paper').height = innerHeight;
-            console.log(document.body.clientHeight)
-
 
             if (innerWidth < 530) {
                 this.textSize = 16;
