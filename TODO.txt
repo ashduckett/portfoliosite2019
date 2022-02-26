@@ -1,0 +1,2 @@
+Speed up typing animation.			DONE
+Keep text present when finished.		DONE

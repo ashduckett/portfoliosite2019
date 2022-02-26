@@ -9,9 +9,6 @@ class SkillView {
 
 }
 
-
-
-
 class SkillBoard {
     constructor(canvas) {
         console.log(canvas);
@@ -42,16 +39,12 @@ class SkillBoard {
                 percent: 79
             },
             {
-                label: 'ES6',
-                percent: 77
-            },
-            {
                 label: 'Vue',
                 percent: 66
             },
             {
                 label: 'UI Design',
-                percent: 50
+                percent: 45
             },
             {
                 label: 'Swift',
@@ -62,9 +55,16 @@ class SkillBoard {
                 percent: 77
             }
         ];
+    
+    
+        window.addEventListener('resize', () => {
+            console.log(this)
+            this.render();
+        });
     }
 
     render() {
+        this.canvas.innerHTML = "";
         // We need an element for each skill
         for (let skill of this.data) {
 
@@ -123,6 +123,5 @@ class SkillBoard {
 
 
         }
-
     }
 }

@@ -18,12 +18,10 @@ document.addEventListener('DOMContentLoaded', () => {
     ts.write('I am a front-end developer.')
     ts.delete(20);
     ts.write('fullstack developer.');
-    ts.delete(20);
-    ts.write('iOS developer.');
+    ts.delete(21);
+    ts.write('n iOS developer.');
     ts.delete(14);
     ts.write('all-round coding ninja.');
-
-
 
     // Sort out the learn buttons.
     const learnMoreButtons = document.getElementsByClassName('btn-learn');
@@ -35,14 +33,14 @@ document.addEventListener('DOMContentLoaded', () => {
             headerText: 'Dive Thailand',
             subheaderText: 'A promotional website for diving adventures',
             detail: 'Dive Thailand offer diving adventures for the tourist industry. The site involved matching a design precisely, making the site dynamic so it could be updated and building a basic CMS from scratch.',
-            demoUrl: 'https://divingthailand.co.uk/'
+            demoUrl: 'http://ashduckett.com/divethailand/'
         },
         {
             images: ['woodramModal1.png'],
             headerText: 'Woodram Construction',
             subheaderText: 'Getting a Construction Company Online',
             detail: 'Woodram offer a range of different services in the construction industry.',
-            demoUrl: 'https://www.woodramconstruction.co.uk/'
+            demoUrl: 'http://www.ashduckett.com/woodram/'
                       
         },
         {
@@ -98,4 +96,117 @@ document.addEventListener('DOMContentLoaded', () => {
     //     i++;
     // }
 
+    const arrowScroll = (evt) => {
+        evt.preventDefault();
+        const top = document.querySelector('.section-intro').offsetTop;
+        
+        window.scroll({
+            top: top,
+            left: 0, 
+            behavior: 'smooth'
+        });
+    };
+
+    document.querySelector('.header__centerpiece__link').addEventListener('click', arrowScroll);
+    document.querySelector('.header__scroll-arrow').addEventListener('click', arrowScroll);
+
+    // Click event for submit button
+    const submitButton = document.querySelector('.submit');
+    
+    submitButton.addEventListener('click', (evt) => {
+        evt.preventDefault();
+
+        const name = document.querySelector('.name').value;
+        const email = document.querySelector('.email').value;
+        const enquiry = document.querySelector('.enquiry').value;
+
+        let fd = new FormData();
+        fd.append('name', name);
+        fd.append('email', email);
+        fd.append('enquiry', enquiry);
+
+        if (name && email && enquiry) {
+            evt.target.innerHTML = 'Submit <i class="fas fa-spinner fa-pulse"></i>';
+            fetch('http:/www.ashduckett.com/sendEmail.php', {
+                method: 'POST',
+                cors: 'no-cors',
+                body: fd
+            }).then(() => {
+                evt.target.innerHTML = 'Submit';
+                const thanks = document.querySelector('.thank-you');
+                thanks.style.opacity = 1;
+
+                setTimeout(() => {
+                    thanks.style.opacity = 0;
+                    document.querySelector('.name').value = '';
+                    document.querySelector('.email').value = '';
+                    document.querySelector('.enquiry').value = '';
+
+                }, 5000);
+            });
+        }
+        
+    });
+
+    window.addEventListener('scroll', () => {
+        const menuItems = document.querySelectorAll('.nav__menu-item');
+
+        if (window.scrollY === 0) {
+            menuItems.forEach((menuItem) => {
+                menuItem.classList.remove('nav__menu-item--hidden');
+                menuItem.classList.add('nav__menu-item--show');
+            });
+            document.querySelector('.hamburger').classList.remove('hamburger--visible');
+            document.querySelector('.nav__menu').classList.remove('nav__menu--hidden');
+            
+        } else {
+            menuItems.forEach((menuItem) => {
+                menuItem.classList.add('nav__menu-item--hidden');
+                menuItem.classList.remove('nav__menu-item--show');
+            });
+            document.querySelector('.hamburger').classList.add('hamburger--visible');
+            document.querySelector('.nav__menu').classList.remove('nav__menu--hidden');
+            
+        }
+    });
+
+    document.querySelector('.hamburger').addEventListener('click', () => {
+        document.querySelector('.hamburger').classList.toggle('isActive');
+        document.querySelector('.hamburger__altMenuContainer').classList.toggle('hamburger__altMenuContainer--show');
+        document.querySelector('.altMenuItems').classList.toggle('altMenuItems--shown');
+    });
+
+    const relatedLocations = ['.header', '.section-intro', '.projects', '.contact'];
+    // Get all of the mobile options
+    const mobileOptions = document.querySelectorAll('.nav__mobileMenuItem a');
+
+    for (let i = 0; i < mobileOptions.length; i++) {
+        const mOption = mobileOptions[i];
+        mOption.addEventListener('click', (evt) => {
+            evt.preventDefault();
+        
+            // Now we just need to know which one was clicked.
+            document.querySelector('.hamburger').classList.toggle('isActive');
+            document.querySelector('.hamburger__altMenuContainer').classList.toggle('hamburger__altMenuContainer--show');
+            document.querySelector('.altMenuItems').classList.toggle('altMenuItems--shown');
+            let top = document.querySelector(relatedLocations[i]).offsetTop;
+            window.scroll({top: top, left: 0, behavior: 'smooth'});
+        });
+    }
+
+    // Now the same for the non-mobile bits
+    const desktopOptions = document.querySelectorAll('.nav__menu-item-link');
+
+    for (let i = 0; i < desktopOptions.length; i++) {
+        const mOption = desktopOptions[i];
+    
+        mOption.addEventListener('click', (evt) => {
+            evt.preventDefault();
+            let top = document.querySelector(relatedLocations[i]).offsetTop;
+            window.scroll({top: top, left: 0, behavior: 'smooth'});
+        });
+    }
+
+
+    
 });

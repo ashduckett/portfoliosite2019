@@ -7,13 +7,32 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway:400,700,900&display=swap" rel="stylesheet">
     <link href="css/all.css" rel="stylesheet">
     <link href="css/styles.css" rel="stylesheet">
-    <title>Ash Duckett | Programmer</title>
+    <title>Ash Duckett | Freelance Web Developer</title>
 </head>
 <body>
     <header class="header">
+        <nav class="nav">
+            <ul class="nav__menu">
+                <li class="nav__menu-item"><a class="nav__menu-item-link" href="#">Home</a></li>
+                <li class="nav__menu-item"><a class="nav__menu-item-link" href="#">About</a></li>
+                <li class="nav__menu-item"><a class="nav__menu-item-link" href="#">Projects</a></li>
+                <li class="nav__menu-item"><a class="nav__menu-item-link" href="#">Contact</a></li>
+                <li class="hamburger">
+                    <span class="line"></span>
+                    <span class="line"></span>
+                    <span class="line"></span>
+                    <div class="hamburger__altMenuContainer"></div>
+                </li>
+                <div class="altMenuItems">
+                    <li class="nav__mobileMenuItem"><a href="#">Home</a></li>
+                    <li class="nav__mobileMenuItem"><a href="#">About</a></li>
+                    <li class="nav__mobileMenuItem"><a href="#">Projects</a></li>
+                    <li class="nav__mobileMenuItem"><a href="#">Contact</a></li>
+                </div>
+            </ul>
+        </nav>
         <div class="header__centerpiece">
             <div class="header__centerpiece__text">
-                <!-- I am Ash.<br>I am a full-stack web developer. -->
                 <canvas id="paper"></canvas>
             </div>
             <a href="#" class="header__centerpiece__link">Show More</a>
@@ -31,51 +50,58 @@
                 <div class="strengths__item">
                     <div class="strengths__item__hexwrapper">
                         <div class="strengths__item__hex">
-                            <i class="fas fa-tachometer-alt"></i>
+                            <i class="fas fa-heart"></i>
                         </div>
                     </div>
-                    <h2 class="strengths__item__header">Speed</h2>
-                    <p class="strengths__item__text">Nobody wants a slow experience so if there are any optimisations I can make, I will.</p>
+                    <h2 class="strengths__item__header">Ethical</h2>
+                    <p class="strengths__item__text">
+                        I will only ever charge you either a fixed price for a month's work or an hourly rate for my time and knowledge. I won't add charges for small changes that can be done quickly.
+                    </p>
                 </div>
                 <div class="strengths__item">
                     <div class="strengths__item__hexwrapper">
                         <div class="strengths__item__hex">
-                                <i class="fas fa-tablet-alt"></i>
+                                <i class="fas fa-skull"></i>
                         </div>
                     </div>
-                    <h2 class="strengths__item__header">Responsive</h2>
-                    <p class="strengths__item__text">These days this is a priority. Especially with so many users opting for phones or tablets.</p>
+                    <h2 class="strengths__item__header">Human</h2>
+                    <p class="strengths__item__text">
+                        We're human beings, not drones. No suits, no pretentious manner, just a hard-working guy who's willing to help.
+                    </p>
                 </div>
             </div>
             <div class="strengths__two-item-container">
                 <div class="strengths__item">
                     <div class="strengths__item__hexwrapper">
                         <div class="strengths__item__hex">
-                            <i class="far fa-lightbulb"></i>
+                            <i class="fas fa-coins"></i>
                         </div>
                     </div>
-                    <h2 class="strengths__item__header">Intuitive</h2>
-                    <p class="strengths__item__text">User interfaces won't be designed by me, but I know what works and will work hard to get an experience right for you.</p>
+                    <h2 class="strengths__item__header">Honest</h2>
+                    <p class="strengths__item__text">
+                        If something takes a lot less time than initially planned, I'll tell you and the bill will go down. I'll also suggest changes in design where applicable.
+                    </p>
                 </div>
                 <div class="strengths__item">
                     <div class="strengths__item__hexwrapper">
                         <div class="strengths__item__hex">
-                            <i class="fas fa-rocket"></i>
+                            <i class="fas fa-search"></i>
                         </div>
                     </div>
-                    <h2 class="strengths__item__header">Dynamic</h2>
-                    <p class="strengths__item__text">Websites and apps can and should be alive. I love creating new experiences with the power of JavaScript or Swift.</p>
+                    <h2 class="strengths__item__header">Focused</h2>
+                    <p class="strengths__item__text">
+                        If I am working on your project then that's all I will be doing. Your project won't get delayed just because I have other responsibilities.
+                    </p>
                 </div>
             </div>
         </div>
         <div class="bio-and-skills">
             <div class="bio">
-                <div class="bio-and-skills__bio__image-container"></div>
+                <!-- <div class="bio-and-skills__bio__image-container"></div> -->
+                <img src="img/asha.jpg">
                 <h2 class="bio-and-skills__bio__image-header">Who am I?</h2>
                 <p class="bio-and-skills__bio__image-text">
-                    This is a good question for anybody to ask themselves. I am Ash, a freelance developer coding in his spare time as well as his day job.
-                    In my day job I use JavaScript and the Vue front-end framework along with HTML and SASS. In my spare time I create widgets, freelance,
-                    and iOS apps will soon be a part of that.
+                    I'm a freelance developer currently living in the UK countryside. I work with HTML, CSS, SCSS, JavaScript and Vue primarily and develop websites, apps and enjoy the learning involved when thrown a new challenge. If you have a project you want some help with, or you have a project that's not even been born, then get in touch below.
                 </p>
             </div>
             <div class="skills"></div>
@@ -136,10 +162,14 @@
         
         <form class="contactForm">
             
-            <input type="text" placeholder="Name...">
-            <input type="text" placeholder="Email">
-            <textarea placeholder="Your message..."></textarea>
-            <input type="submit" class="submit">
+            <input class="name" type="text" placeholder="Name...">
+            <input class="email" type="email" placeholder="Email">
+            <textarea class="enquiry" placeholder="Your message..."></textarea>
+            <div class="thank-you-container">
+                <div class="thank-you">Thank you for getting in touch. I will email shortly.</div>
+                <a href="#" class="submit">Submit</a>
+            </div>
+            
 
         </form>
         <footer class="footer">
@@ -147,21 +177,21 @@
                 <i class="fas fa-angle-double-up"></i>
             </div>
             <div class="footer__social-media-links">
-                <div class="footer__social-media-links__link">
+                <a href="https://www.linkedin.com/in/ash-duckett-a02973180/" class="footer__social-media-links__link" target="_blank">
                     <i class="fab fa-linkedin-in"></i>
-                </div>
-                <div class="footer__social-media-links__link">
-                    <i class="fab fa-facebook-f"></i>
-                </div>
+                </a>
+                <a href="https://github.com/ashduckett" class="footer__social-media-links__link" target="_blank">
+                    <i class="fab fa-github"></i>
+                </a>
                 <div class="footer__social-media-links__link">
                     <i class="fab fa-instagram"></i>
                 </div>
-                <div class="footer__social-media-links__link">
+                <a href="https://codepen.io/ashduckett" class="footer__social-media-links__link" target="_blank">
                     <i class="fab fa-codepen"></i>
-                </div>
+                </a>
             </div>
             <div class="footer__footer">
-                Ash Duckett &copy; 2019
+                Ash Duckett &copy; 2021
             </div>
         </footer>
 

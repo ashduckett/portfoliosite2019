@@ -104,6 +104,7 @@ function ModalView(controller) {
         slide.style.position = 'absolute';
         slide.style.display = 'none';
         slide.classList.add('slide');
+        
         slide.style.backgroundImage = 'url(img/' + image + ')'
         slide.style.backgroundSize = '100%';
         this.slides.push(slide);

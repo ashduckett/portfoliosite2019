@@ -9,7 +9,6 @@ class TypingSimulator {
         this.time = new Date();
         this.underscoreTime = new Date();
         this.textSize = 30;
-
         this.textXLocation = document.getElementById('paper').width / 2;
         this.textYLocation = document.getElementById('paper').height / 2;
 
@@ -69,7 +68,8 @@ class TypingSimulator {
             this.underscoreTime = new Date();
         }
     
-        const randomDelay = Math.floor(Math.random() * 5000);
+        const randomDelay = Math.floor(Math.random() * 1000);
+        
 
         if (currentTime - this.time.getTime() >= randomDelay) {
             if (this.currentChar < this.finalString.length) {
@@ -89,8 +89,9 @@ class TypingSimulator {
                 this.currentChar++;
             } else {
                 // Loops for now, unconditionally. I doubt anybody else will use this thing so I don't care right now.
-                this.currentChar = 0;
-                this.string = '';
+                // this.currentChar = 0;
+                // this.string = '';
+                this.shouldRun = false;
             }
             this.time = new Date();
         }
@@ -111,7 +112,7 @@ class TypingSimulator {
 
         // Now break up the text into separate lines
         const strings = this.string.split('\n');
-        ctx.clearRect(0, 0, document.body.clientWidth, document.body.clientHeight);
+        //ctx.clearRect(0, 0, document.body.clientWidth, document.body.clientHeight);
         let currentY = this.textYLocation;
 
         // How do I know when not to show the underscore?
